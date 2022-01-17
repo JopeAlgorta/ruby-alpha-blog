@@ -1,0 +1,24 @@
+<h1>Edit Article: <%= @article.id %></h1>
+
+<% if @article.errors.any? %>
+  <h4 style="color: darkred">Some errors were encountered:</h4>
+  <ul>
+    <% @article.errors.full_messages.each do |err| %>
+      <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with model: @article, local: true do |f| %>
+  <div>
+    <%= f.label :title %> <br>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description %> <br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

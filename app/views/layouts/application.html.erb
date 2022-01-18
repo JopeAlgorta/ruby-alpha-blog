@@ -10,13 +10,7 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <% if name == 'notice' %>
-        <p style="color: darkgreen"><%= msg %></p>
-      <% else %>
-        <p><%= msg %></p>
-      <% end %>
-    <% end %>
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>

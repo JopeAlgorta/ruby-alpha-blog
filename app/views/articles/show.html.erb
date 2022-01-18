@@ -1,4 +1,11 @@
 <h1><%= @article.title %></h1>
-
+<button>
+  <%= link_to 'Edit', edit_article_path(@article) %>
+</button>
+<button>
+  <%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
+</button>
 <h3>Description:</h3>
 <p><%= @article.description %></p>
+<br>
+<%= button_to 'Back', articles_path, method: :get %>

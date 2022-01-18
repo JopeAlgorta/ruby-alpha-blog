@@ -1,10 +1,22 @@
 <h1>Articles</h1>
+<button>
+  <%= link_to 'New Article', new_article_path %>
+</button>
 
 <ul>
 <% @articles.each do |article| %>
   <li>
     <h2><%= article.title %></h2>
     <p><%= article.description %></p>
+    <button>
+      <%= link_to 'Show', article_path(article) %>
+    </button>
+    <button>
+      <%= link_to 'Edit', edit_article_path(article) %>
+    </button>
+    <button>
+      <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %>
+    </button>
   </li>
 <% end %>
 </ul>

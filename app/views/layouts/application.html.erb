@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AlphaBlog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>AlphaBlog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
-  </body>
+<body>
+<%= render 'layouts/navbar' %>
+<%= render 'layouts/messages' %>
+<div class="container py-3">
+  <%= yield %>
+  <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+    <div class="container text-center">
+      <span class="text-white-50">Copyright &copy; Alpha Blog, 2022</span>
+    </div>
+  </footer>
+</div>
+
+</body>
 </html>

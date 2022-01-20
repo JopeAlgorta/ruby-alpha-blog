@@ -1,22 +1,16 @@
-<% if @article.errors.any? %>
-  <h4 style="color: darkred">Some errors were encountered:</h4>
-  <ul>
-    <% @article.errors.full_messages.each do |err| %>
-      <li><%= err %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'shared/errors' %>
 <%= form_with model: @article, local: true do |f| %>
-  <div>
-    <%= f.label :title %> <br>
-    <%= f.text_field :title %>
+  <div class="mb-3">
+    <%= f.label :title, class: "form-label" %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-  <div>
-    <%= f.label :description %> <br>
-    <%= f.text_area :description %>
+  <div class="mb-3">
+    <%= f.label :description, class: "form-label" %>
+    <%= f.text_area :description, rows: 10, class: "form-control"  %>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="">
+    <%= f.submit class: "btn btn-success btn" %>
+    <%= link_to 'Back', articles_path, class: "btn btn btn-light mx-3"%>
   </div>
 <% end %>

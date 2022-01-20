@@ -1,7 +1,6 @@
 <% flash.each do |name, msg| %>
-  <% if name == 'notice' %>
-    <p style="color: darkgreen"><%= msg %></p>
-  <% else %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     <p><%= msg %></p>
-  <% end %>
+  </div>
 <% end %>

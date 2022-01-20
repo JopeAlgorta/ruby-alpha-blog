@@ -11,15 +11,11 @@
 
 <body>
 <%= render 'layouts/navbar' %>
-<%= render 'layouts/messages' %>
 <div class="container py-3">
+  <%= render 'layouts/messages' %>
   <%= yield %>
-  <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
-    <div class="container text-center">
-      <span class="text-white-50">Copyright &copy; Alpha Blog, 2022</span>
-    </div>
-  </footer>
 </div>
+<%= render 'shared/footer' %>
 
 </body>
 </html>

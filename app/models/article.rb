@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Article model
 class Article < ApplicationRecord
   belongs_to :user
 

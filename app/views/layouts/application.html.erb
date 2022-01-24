@@ -13,11 +13,16 @@
 
 <body>
 <%= render 'layouts/navbar' %>
-<div class="container pt-3 mb-5">
-  <%= render 'layouts/messages' %>
-  <%= yield %>
+<div class="min-vh-100 position-relative">
+  <div class="container pt-3 pb-5">
+
+    <%= render 'layouts/messages' %>
+    <div class="pb-5">
+      <%= yield %>
+    </div>
+  </div>
+  <%= render 'shared/footer' %>
 </div>
-<%= render 'shared/footer' %>
 
 </body>
 </html>

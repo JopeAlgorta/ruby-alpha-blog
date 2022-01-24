@@ -1,0 +1,12 @@
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9">
+    <h1>Bloggers</h1>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <% @users.each do |user| %>
+    <div class="col-md-9">
+      <%= render 'user', user: user %>
+    </div>
+  <% end %>
+</div>

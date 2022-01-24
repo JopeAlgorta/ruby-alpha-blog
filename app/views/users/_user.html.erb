@@ -1,0 +1,18 @@
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-3">
+      <%= image_tag asset_path("profile_pic.jpg", type: :images), alt: "Profile pic", class: "img-fluid rounded-start", :style => "height: 200px" %>
+    </div>
+    <div class="col-md-9">
+      <div class="card-body h-100">
+        <h2 class="card-title"><%= user.username %></h2>
+        <h6 class="card-subtitle mb-2 text-muted"><%= user.email %> - Joined <%= time_ago_in_words(user.created_at) %> ago</h6>
+        <p class="card-text">Wrote <%= user.articles.count %> articles</p>
+        <div class="mt-5">
+          <%= link_to 'Visit profile', user_path(user), class: "btn btn-outline-success card-link" %>
+          <%= link_to 'Edit profile', edit_user_path(user), class: "btn btn-outline-info card-link" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

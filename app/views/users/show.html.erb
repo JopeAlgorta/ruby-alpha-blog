@@ -11,8 +11,9 @@
       </div>
       <div class="card-body">
         <div class="row g-3">
-          <% if @user.articles.count > 0 %>
-            <% @user.articles.each do |article| %>
+          <% if @articles.count > 0 %>
+            <%= will_paginate @articles, list_classes: %w[pagination], renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+            <% @articles.each do |article| %>
               <div class="col-12">
                 <div class="card h-100 p-3">
                   <div class="card-body">

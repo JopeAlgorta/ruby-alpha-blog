@@ -5,6 +5,7 @@
 </div>
 
 <div class="container-fluid p-0 mt-3">
+  <%= will_paginate @articles, list_classes: %w[pagination justify-content-center], renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
   <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
     <% @articles.each do |article| %>
       <div class="col">
@@ -24,5 +25,8 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="my-3">
+    <%= will_paginate @articles, list_classes: %w[pagination justify-content-center], renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
   </div>
 </div>

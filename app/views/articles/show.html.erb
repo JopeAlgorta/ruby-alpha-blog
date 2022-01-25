@@ -2,7 +2,9 @@
   <div class="col-md-9">
     <div class="h-100 p-4 bg-light rounded-3">
       <h1 class="mb-0"><%= @article.title %></h1>
-      <h6 class="mb-3 text-muted">Created <%= time_ago_in_words @article.created_at %> ago.</h6>
+      <h6 class="mb-3 text-muted">Created
+        by <%= @article.user ? link_to(@article.user.username, user_path(@article.user), class: 'text-muted') : 'anonymous' %>
+        , <%= time_ago_in_words @article.created_at %> ago.</h6>
       <p><%= simple_format @article.description %></p>
 
       <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-secondary" %>

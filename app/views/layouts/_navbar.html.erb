@@ -17,9 +17,27 @@
         </li>
       </ul>
       <div class="navbar-nav d-flex me-3">
-        <div class="nav-item">
-          <%= link_to "Sign Up", signup_path, class: "nav-link" %>
-        </div>
+        <% if logged_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="user" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hi, <strong><%= current_user.username %> </strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user">
+              <li><%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item" %></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><%= link_to "Go to profile", user_path(current_user.id), class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <div class="nav-item">
+            <%= link_to "Sign Up", signup_path, class: "nav-link" %>
+          </div>
+          <div class="nav-item">
+            <%= link_to "Log in", login_path, class: "nav-link" %>
+          </div>
+        <% end %>
       </div>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -1,7 +1,9 @@
 <div class="d-flex flex-row justify-content-between">
   <h1>Articles</h1>
   <div></div>
-  <%= link_to 'New Article', new_article_path, class: "btn btn-dark btn-lg text-decoration-none text-white" %>
+  <% if logged_in? %>
+    <%= link_to 'New Article', new_article_path, class: "btn btn-dark btn-lg text-decoration-none text-white" %>
+  <% end %>
 </div>
 
 <div class="container-fluid p-0 mt-3">
@@ -18,8 +20,10 @@
             <p class="card-text"><%= truncate(article.description, length: 200) %></p>
             <div>
               <%= link_to 'Show', article_path(article), class: "btn btn-outline-light card-link" %>
-              <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-secondary card-link" %>
-              <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger card-link" %>
+              <% if logged_in? && current_user == article.user %>
+                <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-secondary card-link" %>
+                <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger card-link" %>
+              <% end %>
             </div>
           </div>
         </div>

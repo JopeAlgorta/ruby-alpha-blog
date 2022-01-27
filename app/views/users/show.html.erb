@@ -24,15 +24,17 @@
                     <p class="card-text"><%= truncate(article.description, length: 200) %></p>
                     <div>
                       <%= link_to 'Show', article_path(article), class: "btn btn-outline-dark card-link" %>
-                      <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-secondary card-link" %>
-                      <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger card-link" %>
+                      <% if current_user == article.user %>
+                        <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-secondary card-link" %>
+                        <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger card-link" %>
+                      <% end %>
                     </div>
                   </div>
                 </div>
               </div>
             <% end %>
           <% else %>
-              <p class="text-center text-muted">No articles found</p>
+            <p class="text-center text-muted">No articles found</p>
           <% end %>
         </div>
       </div>

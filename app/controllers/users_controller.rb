@@ -1,6 +1,8 @@
 # Users Controller
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :require_user, only: %i[edit update destroy]
+  before_action :require_same_user, only: %i[edit update destroy]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
@@ -37,6 +39,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: 'Account deleted! We are sad to see you go! :('
+  end
+
   private
 
   def set_user
@@ -45,5 +53,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def require_same_user
+    redirect_to @user, alert: 'Action not allowed' unless current_user == @user
   end
 end

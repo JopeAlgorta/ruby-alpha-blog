@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
+    session[:user_id] = nil if current_user == @user
     redirect_to root_path, notice: 'Account deleted! We are sad to see you go! :('
   end
 
@@ -56,6 +56,6 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    redirect_to @user, alert: 'Action not allowed' unless current_user == @user
+    redirect_to @user, alert: 'Action not allowed' unless current_user == @user || current_user.admin?
   end
 end

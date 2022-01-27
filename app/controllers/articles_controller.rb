@@ -54,6 +54,6 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
-    redirect_to @article, alert: 'Action not allowed' unless current_user == @article.user
+    redirect_to @article, alert: 'Action not allowed' unless current_user == @article.user || current_user.admin?
   end
 end

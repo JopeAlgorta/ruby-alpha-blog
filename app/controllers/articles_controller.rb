@@ -3,6 +3,8 @@
 # Controller for Article model.
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
+  before_action :require_user, except: %i[show index]
+  before_action :require_same_user, only: %i[update edit destroy]
 
   def show; end
 
@@ -17,7 +19,8 @@ class ArticlesController < ApplicationController
   def edit; end
 
   def create
-    @article = Article.new article_params
+    @article      = Article.new article_params
+    @article.user = current_user
     if @article.save
       flash[:notice] = 'Article was created successfully!'
       redirect_to @article
@@ -48,5 +51,9 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+
+  def require_same_user
+    redirect_to @article, alert: 'Action not allowed' unless current_user == @article.user
   end
 end

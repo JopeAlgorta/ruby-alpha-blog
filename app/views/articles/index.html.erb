@@ -1,6 +1,5 @@
-<div class="d-flex flex-row justify-content-between">
+<div class="d-flex flex-row justify-content-between align-items-center">
   <h1>Articles</h1>
-  <div></div>
   <% if logged_in? %>
     <%= link_to 'New Article', new_article_path, class: "btn btn-dark btn-lg text-decoration-none text-white" %>
   <% end %>

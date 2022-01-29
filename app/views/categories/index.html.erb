@@ -1,6 +1,5 @@
-<div class="d-flex flex-row justify-content-between">
+<div class="d-flex flex-row justify-content-between align-items-center">
   <h1>Categories</h1>
-  <div></div>
   <% if logged_in? && current_user.admin? %>
     <%= link_to 'New Category', new_category_path, class: "btn btn-dark btn-lg text-decoration-none text-white" %>
   <% end %>

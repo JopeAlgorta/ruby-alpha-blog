@@ -17,6 +17,11 @@
             <h6 class="card-subtitle mb-2 text-muted">Created
               by <%= article.user ? link_to(article.user.username, user_path(article.user), class: 'text-muted') : 'anonymous' %>
               , <%= time_ago_in_words article.created_at %> ago.</h6>
+            <div class="my-2">
+              <% if article.categories.any? %>
+               <%= render article.categories %>
+              <% end %>
+            </div>
             <p class="card-text"><%= truncate(article.description, length: 200) %></p>
             <div>
               <%= link_to 'Show', article_path(article), class: "btn btn-outline-light card-link" %>

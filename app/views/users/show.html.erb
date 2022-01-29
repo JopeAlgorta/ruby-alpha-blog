@@ -7,30 +7,15 @@
   <div class="col-md-9">
     <div class="card border-dark mb-4">
       <div class="card-header bg-dark">
-        <h3 class="text-white">Articles</h3>
+        <h3 class="text-white mb-0">Articles</h3>
       </div>
       <div class="card-body">
         <div class="row g-3">
-          <% if @articles.count > 0 %>
+          <% if @articles.any? %>
             <%= will_paginate @articles, list_classes: %w[pagination], renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
             <% @articles.each do |article| %>
               <div class="col-12">
-                <div class="card h-100 p-3">
-                  <div class="card-body">
-                    <h2 class="card-title"><%= link_to article.title, article_path(article), class: "text-decoration-none text-reset" %></h2>
-                    <h6 class="card-subtitle mb-2 text-muted">Created
-                      by <%= article.user ? article.user.username : 'anonymous' %>
-                      , <%= time_ago_in_words article.created_at %> ago.</h6>
-                    <p class="card-text"><%= truncate(article.description, length: 200) %></p>
-                    <div>
-                      <%= link_to 'Show', article_path(article), class: "btn btn-outline-dark card-link" %>
-                      <% if current_user == article.user || current_user.admin? %>
-                        <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-secondary card-link" %>
-                        <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger card-link" %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
+                <%= render 'articles/article', article: article %>
               </div>
             <% end %>
           <% else %>

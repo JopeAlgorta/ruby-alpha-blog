@@ -12,6 +12,9 @@
         <li class="nav-item">
           <%= link_to "Bloggers", users_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Categories", categories_path, class: "nav-link" %>
+        </li>
         <% if logged_in? %>
           <li class="nav-item">
             <%= link_to "Create article", new_article_path, class: "nav-link" %>
@@ -25,16 +28,16 @@
               Hi, <strong><%= current_user.username %> </strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user">
-              <li><%= link_to "Go to profile", user_path(current_user.id), class: "dropdown-item" %></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
               <% if current_user.admin? %>
                 <li><p class="dropdown-header text-danger">You are Admin</p></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
               <% end %>
+              <li><%= link_to "Go to profile", user_path(current_user.id), class: "dropdown-item" %></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item" %></li>
             </ul>
           </li>

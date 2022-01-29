@@ -8,7 +8,7 @@
         <h2 class="card-title"><%= user.username %></h2>
         <h6 class="card-subtitle mb-2 text-muted"><%= user.email %> - Joined <%= time_ago_in_words(user.created_at) %>
           ago</h6>
-        <p class="card-text">Wrote <%= user.articles.count %> articles</p>
+        <p class="card-text">Wrote <strong><%= pluralize(user.articles.count, 'article') %></strong></p>
         <div class="mt-5">
           <% if !@users && (logged_in? && current_user == user || current_user.admin?) %>
             <%= link_to 'Edit profile', edit_user_path(user), class: "btn btn-outline-info card-link" %>
